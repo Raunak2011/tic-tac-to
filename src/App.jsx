@@ -256,7 +256,7 @@ export default function App() {
       <footer className="page-footer">
         <span>TIC TAC TOE © 2026</span>
         <span>X MARKS THE SPOT <span className="footer-heart">♥</span></span>
-        <span>NO TAKEBACKS</span>
+        <span>RAUNAK</span>
       </footer>
     </main>
   );
