@@ -591,6 +591,11 @@ button {
   border-color: rgba(255, 255, 255, .28)
 }
 
+.ghost-action:disabled {
+  opacity: .4;
+  cursor: not-allowed
+}
+
 /* result */
 .result-overlay {
   position: absolute;
@@ -694,8 +699,8 @@ button {
 
 .hub-hero h1 {
   font-family: var(--display);
-  font-size: clamp(40px, 6vw, 68px);
-  line-height: .98;
+  font-size: clamp(48px, 7.4vw, 84px);
+  line-height: .95;
   letter-spacing: -.045em;
   font-weight: 600;
   margin: 20px 0 16px;
@@ -1031,6 +1036,748 @@ button {
   margin-top: 24px
 }
 
+/* ---------- age calculator ---------- */
+.age-card {
+  max-width: 560px
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left
+}
+
+.field > span {
+  padding-left: 2px;
+  font: 8px var(--mono);
+  letter-spacing: .16em;
+  color: var(--dim)
+}
+
+.field input {
+  width: 100%;
+  height: 48px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .035);
+  color: var(--ink);
+  font: 500 12px var(--mono);
+  color-scheme: dark;
+  outline: none;
+  transition: border-color .16s, box-shadow .16s
+}
+
+.field input:focus {
+  border-color: rgba(255, 192, 90, .6);
+  box-shadow: 0 0 0 3px rgba(255, 192, 90, .12)
+}
+
+.field input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1) opacity(.55)
+}
+
+.age-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  margin-top: 12px;
+  padding: 0 12px;
+  font-size: 8px
+}
+
+.tool-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  padding: 30px 20px;
+  border: 1px dashed rgba(255, 255, 255, .13);
+  border-radius: 16px;
+  text-align: center;
+  color: var(--muted)
+}
+
+.tool-empty svg {
+  color: var(--gold)
+}
+
+.tool-empty b {
+  color: #f1eff4;
+  font-size: 13px;
+  font-weight: 600
+}
+
+.tool-empty span {
+  font-size: 11.5px;
+  line-height: 1.5
+}
+
+.tool-error {
+  margin-top: 16px;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 77, 116, .4);
+  border-radius: 10px;
+  background: rgba(255, 77, 116, .09);
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #ffb2c4
+}
+
+.age-result {
+  margin-top: 20px
+}
+
+.age-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px
+}
+
+.age-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 6px 13px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .025)
+}
+
+.age-unit b {
+  font-family: var(--display);
+  font-size: clamp(26px, 7vw, 34px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: #fff
+}
+
+.age-unit span {
+  font: 8px var(--mono);
+  letter-spacing: .18em;
+  color: var(--gold)
+}
+
+.stat-list {
+  margin-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, .08)
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+  text-align: left;
+  font-size: 12px;
+  color: var(--muted)
+}
+
+.stat-row b {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: #f1eff4;
+  font-weight: 600;
+  white-space: nowrap
+}
+
+.stat-row small {
+  font: 9px var(--mono);
+  color: var(--dim)
+}
+
+.stat-row.highlight b {
+  color: var(--gold)
+}
+
+/* ---------- calculator ---------- */
+.calc-card {
+  max-width: 440px
+}
+
+.calc-display {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  min-height: 104px;
+  margin-bottom: 14px;
+  padding: 14px 16px 16px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(0, 0, 0, .5), rgba(255, 255, 255, .02));
+  box-shadow: inset 0 2px 14px rgba(0, 0, 0, .45)
+}
+
+.calc-caption {
+  max-width: 100%;
+  padding-right: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 8px var(--mono);
+  letter-spacing: .14em;
+  color: var(--dim)
+}
+
+.calc-value {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--display);
+  font-size: clamp(30px, 8vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  color: #fff
+}
+
+.calc-value.is-error {
+  color: var(--pink)
+}
+
+.calc-back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .03);
+  color: #a8a5b0;
+  cursor: pointer;
+  transition: .16s
+}
+
+.calc-back:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, .25)
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px
+}
+
+.key {
+  height: 54px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .035);
+  color: #f1eff4;
+  font: 500 17px var(--mono);
+  cursor: pointer;
+  user-select: none;
+  transition: transform .12s, background .15s, border-color .15s
+}
+
+.key:hover {
+  background: rgba(255, 255, 255, .08);
+  border-color: rgba(255, 255, 255, .2)
+}
+
+.key:active {
+  transform: scale(.96)
+}
+
+.key.fn {
+  color: var(--gold);
+  border-color: rgba(255, 192, 90, .16);
+  background: rgba(255, 192, 90, .07)
+}
+
+.key.op {
+  color: var(--aqua);
+  border-color: rgba(79, 227, 216, .18);
+  background: rgba(79, 227, 216, .07)
+}
+
+.key.eq {
+  color: #fff;
+  border-color: var(--pink);
+  background: var(--pink);
+  box-shadow: 0 12px 26px -14px rgba(255, 77, 116, .85)
+}
+
+.key.eq:hover {
+  background: #ff5f82
+}
+
+.key.wide {
+  grid-column: span 2
+}
+
+.calc-history {
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  text-align: left
+}
+
+.history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 8px var(--mono);
+  letter-spacing: .16em;
+  color: var(--dim)
+}
+
+.history-clear {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #8b8994;
+  font: 8px var(--mono);
+  letter-spacing: .12em;
+  cursor: pointer
+}
+
+.history-clear:hover {
+  color: #fff
+}
+
+.history-empty {
+  margin: 9px 0 0;
+  font-size: 11px;
+  color: var(--dim)
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 126px;
+  margin: 8px 0 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .025);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: .15s
+}
+
+.history-item:hover {
+  background: rgba(255, 255, 255, .06);
+  border-color: rgba(255, 255, 255, .12)
+}
+
+.history-expression {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 10px var(--mono);
+  color: var(--muted)
+}
+
+.history-result {
+  white-space: nowrap;
+  font: 500 12px var(--mono);
+  color: var(--aqua)
+}
+
+/* ---------- camera ---------- */
+.cam-card {
+  max-width: 560px
+}
+
+.cam-viewport {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 50% 40%, #1a1622, #05060a 75%)
+}
+
+.cam-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .25s
+}
+
+.cam-video.visible {
+  opacity: 1
+}
+
+.cam-video.mirror {
+  transform: scaleX(-1)
+}
+
+.cam-state {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 24px;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 38%, rgba(167, 155, 255, .14), rgba(8, 9, 13, .55) 70%)
+}
+
+.cam-state b {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff
+}
+
+.cam-state span:not(.cam-state-icon) {
+  max-width: 270px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #a8a5b0
+}
+
+.cam-state-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 2px;
+  border-radius: 50%;
+  color: #a79bff;
+  background: rgba(167, 155, 255, .1);
+  box-shadow: inset 0 0 0 1px rgba(167, 155, 255, .18)
+}
+
+.cam-state .spin {
+  color: var(--gold)
+}
+
+.cam-chips {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none
+}
+
+.cam-live,
+.cam-facing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 7px;
+  background: rgba(8, 9, 13, .55);
+  backdrop-filter: blur(6px);
+  font: 8px var(--mono);
+  letter-spacing: .14em;
+  color: #e7e4ec
+}
+
+.cam-live .online-dot {
+  width: 5px;
+  height: 5px
+}
+
+.cam-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: #fff;
+  opacity: 0;
+  transition: opacity .22s
+}
+
+.cam-flash.on {
+  opacity: .85;
+  transition: none
+}
+
+.cam-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  min-height: 84px;
+  padding: 18px 0 4px
+}
+
+.cam-round {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .03);
+  color: #c9c6cf;
+  cursor: pointer;
+  transition: .16s
+}
+
+.cam-round:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, .07)
+}
+
+.shutter {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, .65);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: transform .14s
+}
+
+.shutter span {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: #f4f2ee;
+  box-shadow: 0 0 26px rgba(255, 255, 255, .35);
+  transition: background .14s
+}
+
+.shutter:hover span {
+  background: #fff
+}
+
+.shutter:active {
+  transform: scale(.94)
+}
+
+.cam-start {
+  max-width: 280px;
+  margin: 0
+}
+
+.cam-gallery-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  font: 8px var(--mono);
+  letter-spacing: .16em;
+  color: var(--dim)
+}
+
+.cam-gallery-head span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px
+}
+
+.cam-empty {
+  margin: 9px 0 0;
+  text-align: left;
+  font-size: 11px;
+  color: var(--dim)
+}
+
+.cam-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 8px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none
+}
+
+.cam-gallery li {
+  position: relative
+}
+
+.cam-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  background: #000;
+  cursor: pointer
+}
+
+.cam-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .2s
+}
+
+.cam-thumb:hover img {
+  transform: scale(1.05)
+}
+
+.cam-thumb-time {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: rgba(8, 9, 13, .7);
+  font: 7px var(--mono);
+  letter-spacing: .08em;
+  color: #e7e4ec
+}
+
+.cam-remove {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 50%;
+  background: #1d1a27;
+  color: #ffb2c4;
+  cursor: pointer
+}
+
+.cam-remove:hover {
+  color: #fff;
+  background: var(--pink)
+}
+
+.photo-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(5, 6, 10, .88);
+  backdrop-filter: blur(10px);
+  animation: fadeIn .2s ease-out
+}
+
+.photo-viewer img {
+  max-width: min(92vw, 720px);
+  max-height: 68vh;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .7)
+}
+
+.viewer-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .05);
+  color: #fff;
+  cursor: pointer
+}
+
+.viewer-actions {
+  display: flex;
+  gap: 10px
+}
+
+.viewer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .04);
+  color: #e7e4ec;
+  font: 9px var(--mono);
+  letter-spacing: .13em;
+  text-decoration: none;
+  cursor: pointer
+}
+
+.viewer-btn:hover {
+  border-color: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, .08)
+}
+
+.viewer-btn.danger {
+  color: #ffb2c4;
+  border-color: rgba(255, 77, 116, .35)
+}
+
+.viewer-btn.danger:hover {
+  background: rgba(255, 77, 116, .12)
+}
+
+.spin {
+  animation: spin 1s linear infinite
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
 @keyframes markIn {
   from {
     opacity: 0;
@@ -1117,6 +1864,10 @@ button {
   .crumb-current {
     display: none
   }
+
+  .field input {
+    font-size: 16px
+  }
 }
 
 @media(max-width:420px) {
@@ -1125,7 +1876,7 @@ button {
   }
 
   .hub-hero h1 {
-    font-size: 36px
+    font-size: 44px
   }
 
   .mark-switch-label {
@@ -1156,5 +1907,28 @@ button {
 
   .lab-card h1 {
     font-size: 27px
+  }
+
+  .field-row {
+    grid-template-columns: 1fr
+  }
+
+  .key {
+    height: 50px;
+    font-size: 16px
+  }
+
+  .cam-controls {
+    gap: 16px
+  }
+
+  .cam-round {
+    width: 40px;
+    height: 40px
+  }
+
+  .shutter {
+    width: 62px;
+    height: 62px
   }
 }

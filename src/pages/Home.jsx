@@ -47,8 +47,7 @@ export default function Home() {
         <h1>Everything you need.<br /><span>One tap away.</span></h1>
         <p>Calculators, a quick game and a camera — all in one place. No installs, no clutter, nothing to dig through.</p>
       </section>
-
-      <section className="hub-stage">
+      <section className="hub-stage">s
         <div className="section-head">
           <span>ALL TOOLS</span>
           <span>01 — {String(TOOLS.length).padStart(2, '0')}</span>
